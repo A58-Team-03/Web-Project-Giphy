@@ -10,7 +10,7 @@ Design and implement a Gifs SPA application for searching and sharing funny gifs
 
 ### 2. Functional Requirements
 
-Each requirement is categorized in one of three categories – <span style="color:red">**must** </span>, <span style="color:yellow">**should**</span>, or <span style="color:green">**could**</span>.
+Each requirement is categorized in one of three categories – $\textcolor{red}{\textsf{must}}$, $\textcolor{yellow}{\textsf{should}}$, or $\textcolor{green}{\textsf{could}}$.
 
 · Must requirements have the highest priority and should be addressed first.
 
@@ -24,7 +24,7 @@ Any additional features are welcome, if you have covered all the listed requirem
 
 ### 3. Must Requirements
 
-The application <span style="color:red"> **must** </span> support the following functionalities:
+The application $\textcolor{red}{\textsf{must}}$ support the following functionalities:
 
 **Display Trending Gifs**
 
@@ -46,7 +46,7 @@ The application should have an **upload gif** functionality, that will allow the
 
 ### 4. Should Requirements
 
-This application <span style="color:yellow">**should**</span> support the following functionalities:
+This application $\textcolor{yellow}{\textsf{should}}$ support the following functionalities:
 
 **Display Uploaded Gifs**
 
@@ -60,25 +60,25 @@ The application should have a **favorite gif** functionality, that will allow th
 
 ### 5. General Requirements
 
-· You <span style="color:red">**must**</span> use Native DOM API for DOM manipulations.
+· You $\textcolor{red}{\textsf{must}}$ use Native DOM API for DOM manipulations.
 
-· You <span style="color:red">**must** </span> use Git to keep your source code and for team collaboration.
+· You $\textcolor{red}{\textsf{must}}$ use Git to keep your source code and for team collaboration.
 
-· You <span style="color:red">**must** </span> use GitHubs issue tracking system.
+· You $\textcolor{red}{\textsf{must}}$ use GitHubs issue tracking system.
 
-· You <span style="color:red">**must** </span> use ESLint to write consistently styled code.
+· You $\textcolor{red}{\textsf{must}}$ use ESLint to write consistently styled code.
 
-· You <span style="color:red">**must** </span> use modules and they should be single-responsible.
+· You $\textcolor{red}{\textsf{must}}$ use modules and they should be single-responsible.
 
-· You <span style="color:red">**must** </span> document your code explicitly following the JSDoc standard.
+· You $\textcolor{red}{\textsf{must}}$ document your code explicitly following the JSDoc standard.
 
-· You <span style="color:red">**must** </span> use correct naming and write clean, self-documenting code.
+· You $\textcolor{red}{\textsf{must}}$ use correct naming and write clean, self-documenting code.
 
-· You <span style="color:red">**must** </span> have usable user interface.
+· You $\textcolor{red}{\textsf{must}}$ have usable user interface.
 
-· You <span style="color:red">**must** </span> use the latest features of ECMAScript.
+· You $\textcolor{red}{\textsf{must}}$ use the latest features of ECMAScript.
 
-· You <span style="color:green">**could** </span> use external libraries such as Bootstrap, Materialize or other to style your project
+· You $\textcolor{green}{\textsf{could}}$ use external libraries such as Bootstrap, Materialize or other to style your project
 
 · External libraries such as jQuery UI, Kendo UI or other for custom controls are allowed.
 
@@ -99,4 +99,3 @@ You will be invited to provide feedback about all your teammates, their attitude
 ### 8. Step-by-step Guide for Giphy API
 
 For Step-by-step guide to use Giphy API, please refer to the official **[Project Requirements](https://learn.telerikacademy.com/mod/page/view.php?id=60974)**.
-
