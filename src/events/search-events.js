@@ -8,3 +8,21 @@
 //   const data = searchMovies(searchTerm);
 //   q(CONTAINER_SELECTOR).innerHTML = toSearchView(data, searchTerm);
 // };
+export function fetchSearchGifs(query) {
+    fetch(`${apiUrl}/search?api_key=${apiKey}&q=${query}&limit=24`)
+        .then(response => response.json())
+        .then(data => displayGifs(data.data))
+        .catch(error => console.error("Error fetching search results:", error));
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchTrendingGifs();
+
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            fetchSearchGifs(searchInput.value);
+        }
+    });
+});

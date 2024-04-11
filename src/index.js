@@ -1,7 +1,15 @@
 import { fetchTrendingGifs } from "./events/fetch-gifs.js";
+import { fetchSearchGifs } from "./events/search-events.js"; 
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchTrendingGifs();
+
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      fetchSearchGifs(searchInput.value);
+    }
+  });
 });
 // document.addEventListener("DOMContentLoaded", () => {
 //   // add global listener
