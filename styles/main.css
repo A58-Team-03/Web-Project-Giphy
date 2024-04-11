@@ -1,1 +1,119 @@
-/* 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #303030; 
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" fill-opacity=".2"><rect width="12.5" height="7.5" /><rect x="12.5" y="7.5" width="12.5" height="7.5" /></svg>'); /* Mesh pattern with rectangles */
+  }
+  .team-name {
+    font-family: 'Bangers', cursive;
+    color: purple;
+    font-size: 128px; 
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    width: auto; 
+    background-color: purple;
+    color: #fff;
+    padding: 10px 20px; 
+    margin: 0; 
+    position: relative; 
+    align-self: flex-start; 
+    order: -1; 
+  }
+  
+  .search-container {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px; 
+  }
+  
+  .search-bar {
+    width: 100%;
+    display: flex;
+    align-items: stretch; 
+  }
+  
+  .search-bar input[type="text"], .search-bar button {
+    padding: 10px;
+    height: 40px; 
+    border: 1px solid #ddd; 
+    background: white; 
+    box-sizing: border-box; 
+  }
+  
+  .search-bar input[type="text"] {
+    width: calc(100% - 52px); 
+    border-right: none; 
+  }
+  
+  .search-bar button {
+    width: 40px; 
+    background: purple; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+  }
+  
+  .search-bar button:hover {
+    background: #7d007d; 
+  }
+  
+  #trending-gifs {
+    -webkit-column-count: 5; 
+    -moz-column-count: 5; 
+    column-count: 5; 
+    
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+    
+    width: 70%;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  
+  #trending-gifs img {
+    width: 100%; 
+    height: auto; 
+    gap: 20px 
+    display: block; 
+  }
+  @media (max-width: 1200px) {
+    #trending-gifs {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    #trending-gifs {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    #trending-gifs {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    #trending-gifs {
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+      column-count: 1;
+    }
+  } 
