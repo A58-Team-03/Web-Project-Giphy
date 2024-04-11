@@ -1,13 +1,8 @@
-// import { CATEGORIES, HOME } from "./common/constants.js";
-// import { toggleFavoriteStatus } from "./events/favorites-events.js";
-// import { q } from "./events/helpers.js";
-// import {
-//   loadPage,
-//   renderCategory,
-//   renderMovieDetails,
-// } from "./events/navigation-events.js";
-// import { renderSearchItems } from "./events/search-events.js";
+import { fetchTrendingGifs } from "./events/fetch-gifs.js";
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetchTrendingGifs();
+});
 // document.addEventListener("DOMContentLoaded", () => {
 //   // add global listener
 //   document.addEventListener("click", (event) => {
