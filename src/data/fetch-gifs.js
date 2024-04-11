@@ -8,7 +8,7 @@ export const fetchTrendingGifs = (limit) => {
 };
 
 export function fetchSearchGifs(query) {
-  fetch(`${API_URL}/search?api_key=${API_KEY}&q=${query}&limit=24`)
+ return fetch(`${API_URL}/search?api_key=${API_KEY}&q=${query}&limit=24`)
     .then(response => response.json())
     .then(data => data.data)
     .catch(error => console.error("Error fetching search results:", error));
