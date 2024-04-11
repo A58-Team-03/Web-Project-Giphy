@@ -16,13 +16,3 @@ export function fetchSearchGifs(query) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    fetchTrendingGifs();
-
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            fetchSearchGifs(searchInput.value);
-        }
-    });
-});
