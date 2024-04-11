@@ -3,30 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <title>Trending Gifs</title>
+    <title>Mov(e)ster</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    </head>
-    
-    <body>
-      <div class="team-name">Team Free Gifz</div>
-    
-    
-      <div class="search-container">
-        <div class="search-bar">
-          <input type="text" id="search-input" placeholder="Search.." />
-          <button type="button" id="search-button"><i class="fas fa-search"></i></button>
-        </div>
-    
-    
-    
-    
-        <h1>Trending Gifs</h1>
-    
-        <div id="trending-gifs"></div>
-        <script src="./src/index.js" type="module"></script>
-    </body>
-    
-    </html>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header></header>
+      <nav>
+        <a href="#" class="nav-link" data-page="trending">Trending</a> |
+        <a href="#" class="nav-link" data-page="upload">Upload</a> |
+        <a href="#" class="nav-link" data-page="about">About</a>
+        <a href="#" class="nav-link" data-page="favorites">Favorites</a>
+        <input id="search" type="text" placeholder="Search" />
+      </nav>
+      <div id="container">
+        <!-- start placeholders -->
+
+        <!-- end placeholders -->
+      </div>
+      <footer>Footer</footer>
+    </div>
+
+    <!-- app -->
+    <script src="./src/index.js" type="module"></script>
+    <!-- end app -->
+  </body>
+</html>

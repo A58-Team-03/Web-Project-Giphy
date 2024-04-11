@@ -1,10 +1,4 @@
-// import {
-//   getCategories,
-//   getMoviesGeneralInfo,
-//   getMovieById,
-//   getCategory,
-//   searchMovies,
-// } from "../data/movies.js";
+// import { getCategories, getMoviesGeneralInfo, getMoviesFullInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
 
 // export const loadCategories = () => {
 //   const categories = getCategories();
@@ -16,7 +10,7 @@
 //   const category = getCategory(id);
 
 //   return category;
-// };
+// }
 
 // export const loadMovies = (categoryId = null) => {
 //   const movies = getMoviesGeneralInfo(categoryId);
@@ -30,7 +24,7 @@
 //   return movie;
 // };
 
-// export const loadSearchMovies = (searchTerm = "") => {
+// export const loadSearchMovies = (searchTerm = '') => {
 //   const movies = searchMovies(searchTerm);
 
 //   return movies;

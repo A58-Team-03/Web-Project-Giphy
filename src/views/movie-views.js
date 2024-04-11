@@ -1,38 +1,43 @@
-import { renderFavoriteStatus } from "../events/favorites-events.js";
+import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 export const toMoviesFromCategoryView = (category, movies) => `
 <div id="movies">
   <h1>${category.name} movies:</h1>
   <div class="content">
-    ${movies.map(toMovieSimple).join("\n")}
+    ${movies.map(toMovieSimple).join('\n')}
   </div>
 </div>
 `;
 
 export const toSingleMovieView = (movie) => `
-     ${toMovieDetailed(movie)} 
+<div id="movies">
+  <h1>${movie.title} (${movie.year})</h1>
+  <div class="content">
+    ${toMovieDetailed(movie)}
+  </div>
+</div>
 `;
 
 export const toMovieSimple = (movie) => `
 <div class="movie">
-    <h2>${movie.title}</h2>
-    <p>Year: ${movie.year}</p>
-    <img src="${movie.poster}" alt="${movie.title}" width="50%"> 
-      <div class="movie-details">
-          <button class="button" data-movie-id="${
-            movie.id
-          }">View Details</button>
-          ${renderFavoriteStatus(movie.id)}
-      </div>
-    </div>
+  <h1>${movie.title}</h1>
+  <h2>${movie.year}</h2>
+  <img src="${movie.poster}"><br>
+  <button class="view-movie-btn" data-movie-id="${movie.id}">View details</button>
+  ${renderFavoriteStatus(movie.id)}
+</div>
 `;
 
 const toMovieDetailed = (movie) => `
 <div class="movie-detailed">
-    <h2>${movie.title}</h2>
-    <img src="${movie.poster}" alt="${movie.title}" width="15%"> 
+  <div class="poster">
+    <img src="${movie.poster}">
+  </div>
+  <div class="movie-info">
     <p>Genre: ${movie.genre}</p>
     <p>Director: ${movie.director}</p>
-    <p>Plot: ${movie.description}</p>    
+    <p>Staring: ${movie.stars.join(', ')}</p>
+    <p>Plot: ${movie.description}</p>
+  </div>
 </div>
 `;

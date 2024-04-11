@@ -1,18 +1,11 @@
-// import { searchMovies } from "../data/movies.js";
-// import { toSearchView } from "../views/search-view.js";
-// import { q } from "./helpers.js";
-// import { CONTAINER_SELECTOR } from "../common/constants.js";
+import { CONTAINER_SELECTOR } from "../common/constants.js";
+// import { loadSearchMovies } from "../requests/request-service.js";
+import { toSearchView } from "../views/search-view.js";
+import { q } from "./helpers.js";
 
-// export const renderSearchItems = (searchTerm) => {
-//   // missing implementation
-//   const data = searchMovies(searchTerm);
-//   q(CONTAINER_SELECTOR).innerHTML = toSearchView(data, searchTerm);
-// };
-export function fetchSearchGifs(query) {
-    fetch(`${apiUrl}/search?api_key=${apiKey}&q=${query}&limit=24`)
-        .then(response => response.json())
-        .then(data => displayGifs(data.data))
-        .catch(error => console.error("Error fetching search results:", error));
-}
+export const renderSearchItems = (searchTerm) => {
+  const movies = loadSearchMovies(searchTerm);
 
-
+  q(CONTAINER_SELECTOR).innerHTML = toSearchView(movies, searchTerm);
+};
+// search bar

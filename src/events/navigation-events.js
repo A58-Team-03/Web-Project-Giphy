@@ -1,92 +1,90 @@
+import {
+  ABOUT,
+  UPLOAD,
+  CONTAINER_SELECTOR,
+  FAVORITES,
+  HOME,
+  LIMIT_GIFS,
+} from "../common/constants.js";
 // import {
-//   ABOUT,
-//   CATEGORIES,
-//   CONTAINER_SELECTOR,
-//   FAVORITES,
-//   HOME,
-// } from "../common/constants.js";
-// import {
-//   getCategory,
-//   getMovieById,
-//   getMoviesGeneralInfo,
-// } from "../data/movies.js";
-// import { loadCategories } from "../requests/request-service.js";
+//   loadCategories,
+//   loadCategory,
+//   loadMovies,
+//   loadSingleMovie,
+// } from "../requests/request-service.js";
 // import { toAboutView } from "../views/about-view.js";
-
 // import { toCategoriesView } from "../views/category-view.js";
 // import { toFavoritesView } from "../views/favorites-view.js";
-// import { toHomeView } from "../views/home-view.js";
+import { toHomeView } from "../views/home-view.js";
 // import {
-//   toMovieSimple,
 //   toMoviesFromCategoryView,
 //   toSingleMovieView,
 // } from "../views/movie-views.js";
-// import { q, setActiveNav } from "./helpers.js";
-// import { renderSearchItems } from "./search-events.js";
-// import { getFavorites } from "../data/favorites.js";
+import { q, setActiveNav } from "./helpers.js";
+import { getFavorites } from "../data/favorites.js";
+import { fetchTrendingGifs } from "../data/fetch-gifs.js";
 
-// // public API
-// export const loadPage = (page = "") => {
-//   switch (page) {
-//     case HOME:
-//       setActiveNav(HOME);
-//       return renderHome();
+// public API
+export const loadPage = (page = "") => {
+  switch (page) {
+    case HOME:
+      setActiveNav(HOME);
+      return renderHome();
 
-//     case CATEGORIES:
-//       setActiveNav(CATEGORIES);
-//       return renderCategories();
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderCategories();
 
-//     case FAVORITES:
-//       setActiveNav(FAVORITES);
-//       return renderFavorites();
+    case FAVORITES:
+      setActiveNav(FAVORITES);
+      return renderFavorites();
 
-//     case ABOUT:
-//       setActiveNav(ABOUT);
-//       return renderAbout();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAbout();
 
-//     // missing partial implementation
+    /* if the app supports error login, use default to log mapping errors */
+    default:
+      return null;
+  }
+};
 
-//     /* if the app supports error logging, use default to log mapping errors */
-//     default:
-//       return null;
-//   }
-// };
+export const renderMovieDetails = (id = null) => {
+  const movie = loadSingleMovie(id);
 
-// export const renderMovieDetails = (id = null) => {
-//   const _movie = getMovieById(id);
+  q(CONTAINER_SELECTOR).innerHTML = toSingleMovieView(movie);
+};
 
-//   q(CONTAINER_SELECTOR).innerHTML = toSingleMovieView(_movie);
-// };
+export const renderCategory = (categoryId = null) => {
+  const category = loadCategory(categoryId);
+  const movies = loadMovies(category.id);
 
-// export const renderCategory = (categoryId = null) => {
-//   // missing partial implementation
-//   const _category = getCategory(categoryId);
-//   const _movies = getMoviesGeneralInfo(categoryId);
+  q(CONTAINER_SELECTOR).innerHTML = toMoviesFromCategoryView(category, movies);
+};
 
-//   q(CONTAINER_SELECTOR).innerHTML = toMoviesFromCategoryView(
-//     _category,
-//     _movies
-//   );
-// };
+// private functions
 
-// // private functions
+const renderHome = () => {
+  fetchTrendingGifs(LIMIT_GIFS).then((data) => {
+    q(CONTAINER_SELECTOR).innerHTML = toHomeView(data);
+  });
+};
 
-// const renderHome = () => {
-//   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
-// };
+const renderCategories = () => {
+  const categories = loadCategories();
 
-// const renderCategories = () => {
-//   // missing implementation
-//   const _categories = loadCategories();
-//   q(CONTAINER_SELECTOR).innerHTML = toCategoriesView(_categories);
-// };
+  q(CONTAINER_SELECTOR).innerHTML = toCategoriesView(categories);
+};
 
-// const renderFavorites = () => {
-//   const _movie = getFavorites().map(getMovieById);
+const renderFavorites = () => {
+  const favorites = getFavorites();
+  const movies = favorites.map((id) => loadSingleMovie(id));
 
-//   q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(_movie);
-// };
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies);
+};
 
-// const renderAbout = () => {
-//   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
-// };
+const renderAbout = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
+};
+
+// hodim mejdu stranicite navigation
