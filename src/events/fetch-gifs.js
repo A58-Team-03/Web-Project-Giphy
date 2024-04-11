@@ -1,5 +1,7 @@
+import { API_KEY, API_URL } from "../common/constants.js";
+
 export const fetchTrendingGifs = () => {
-  fetch(`${apiUrl}/trending?api_key=${apiKey}&limit=50`)
+  fetch(`${API_URL}/trending?api_key=${API_KEY}&limit=25`)
     .then((response) => response.json())
     .then((data) => displayGifs(data.data))
     .catch((error) => console.error("Error fetching trending gifs:", error));
