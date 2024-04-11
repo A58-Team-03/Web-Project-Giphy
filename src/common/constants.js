@@ -11,3 +11,7 @@
 // export const FULL_HEART = '❤';
 
 // export const EMPTY_HEART = '♡';
+
+export const API_KEY = "ZukUfGQGywWNxeY5PBTQ1VPBESKo0AqF";
+
+export const API_URL = "https://api.giphy.com/v1/gifs";
