@@ -1,4 +1,4 @@
-const displayGifs = (gifs) => {
+export const displayGifs = (gifs) => {
   const gifContainer = document.getElementById("trending-gifs");
   gifContainer.innerHTML = "";
   gifs.forEach((gif) => {

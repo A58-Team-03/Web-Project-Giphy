@@ -1,4 +1,4 @@
-const fetchTrendingGifs = () => {
+export const fetchTrendingGifs = () => {
   fetch(`${apiUrl}/trending?api_key=${apiKey}&limit=50`)
     .then((response) => response.json())
     .then((data) => displayGifs(data.data))
