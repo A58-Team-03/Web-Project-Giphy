@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage(HOME);
   });
 
+trendingTitle.addEventListener  ("click", () => {
+  loadPage(HOME); 
+});
+
   document.getElementById("trending-gifs").addEventListener("click", event => {
     if (event.target.tagName === 'IMG') {
       const gifId = event.target.dataset.id;  

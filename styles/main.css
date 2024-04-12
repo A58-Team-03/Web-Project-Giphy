@@ -28,7 +28,7 @@ body {
   color: #7d007d; 
 }
 
-h1 {
+/* h1 {
   background-color: purple;
   color: #fff;
   padding: 5px 20px; 
@@ -43,6 +43,22 @@ h1 {
   margin-left: auto; 
   margin-right: auto; 
   box-sizing: border-box; 
+} */
+
+#trending-title {
+  background-color: purple;
+  color: #fff;
+  padding: 5px 20px;
+  width: calc(100% - 40px);
+  text-align: left;
+  font-size: 24px;
+  border-bottom: 1px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer; 
+}
+
+#trending-title:hover {
+  background-color: #7d007d; 
 }
 
 .search-container {
