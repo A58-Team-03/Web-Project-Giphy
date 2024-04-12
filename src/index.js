@@ -32,11 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // search events
-  q('input#search').addEventListener('input', e => {
-    renderSearchItems(e.target.value);
+  // // search events
+  // q('input#search').addEventListener('input', e => {
+  //   renderSearchItems(e.target.value);
+  // });
+
+  q("button#search-button").addEventListener("click", () => {
+    const searchTerm = q("input#search").value;
+    renderSearchItems(searchTerm);
   });
 
   loadPage(HOME);
 
+});
+
+q("input#search").addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    const searchTerm = q("input#search").value;
+    renderSearchItems(searchTerm);
+  }
 });
