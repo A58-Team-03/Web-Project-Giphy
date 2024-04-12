@@ -49,12 +49,15 @@ h1 {
   background-color: purple;
   color: #fff;
   padding: 5px 20px;
-  width: calc(100% - 40px);
+  width: 11.1%;
+  margin-right: 56.2%;
   text-align: left;
   font-size: 24px;
   border-bottom: 1px solid #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  cursor: pointer; 
+  cursor: pointer;
+  position: relative;
+  top: 35px;
 }
 
 #trending-title:hover {
@@ -182,5 +185,40 @@ display block;
     column-count: 1;
   }
 }
+.trending-title {
+  width: 25%;  /* Assuming full width divided by 4 columns */
+  margin: 20px auto; /* Center the title within the container, added vertical margin */
+  text-align: center; /* Ensure the text is centered within the button itself */
+  background-color: purple;
+  color: #fff;
+  padding: 5px 20px; /* Adjust padding as needed */
+  cursor: pointer; /* Ensures it's clear this is a clickable element */
+  display: block; /* Ensures it takes the full width of the specified percentage */
+  border: none; /* Removes any default button borders */
+}
 
+/* Responsive adjustments to match the GIF column setup */
+@media (max-width: 1200px) {
+  .trending-title {
+    width: 25%; /* 4 columns */
+  }
+}
+
+@media (max-width: 800px) {
+  .trending-title {
+    width: 33.33%; /* 3 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .trending-title {
+    width: 50%; /* 2 columns */
+  }
+}
+
+@media (max-width: 400px) {
+  .trending-title {
+    width: 100%; /* 1 column, full width */
+  }
+}
 
