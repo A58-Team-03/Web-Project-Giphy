@@ -1,7 +1,7 @@
 import { HOME, UPLOAD } from "./common/constants.js";
 import { loadPage, renderGifDetails } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
-import { q } from "./events/helpers.js";
+import { q, qs } from "./events/helpers.js";
 import { uploadGifs } from "./data/fetch-gifs.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchButton = q("#search-button");
   const searchInput = q("#search-input");
   const logo = q(".team-name");
-  const uploadLink = q("[data-page='upload']");
+  const uploadText = q(".link-text#upload");
 
   searchButton.addEventListener("click", () => {
     renderSearchItems(searchInput.value);
@@ -26,9 +26,46 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(HOME);
   });
 
-  uploadLink.addEventListener("click", (event) => {
+  uploadText.addEventListener("click", (event) => {
     event.preventDefault();
     loadPage(UPLOAD);
+  });
+
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".gif-data")) {
+      const gifId = event.target.closest(".gif-data").id;
+      renderGifDetails(gifId);
+    }
+  });
+
+  const navItems = qs(".link-item");
+  navItems.forEach((navItem, index) => {
+    navItem.addEventListener("click", () => {
+      document.querySelector(".active").classList.remove("active");
+      navItem.classList.add("active");
+      const indicator = document.querySelector(".indicator");
+      indicator.style.left = `${index * 95 + 48}px`;
+
+      const text = navItem.querySelector(".link-text").textContent;
+
+      switch (true) {
+        case text === "Trending":
+          loadPage(HOME);
+          break;
+        case text === "Upload":
+          loadPage(UPLOAD);
+          break;
+        case text === "Favorites":
+          loadPage(FAVORITES);
+          break;
+        case text === "About":
+          loadPage(ABOUT);
+          break;
+
+        default:
+          break;
+      }
+    });
   });
 
   document.addEventListener("submit", (event) => {
@@ -52,14 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document
-    .getElementById("trending-gifs")
-    .addEventListener("click", (event) => {
-      if (event.target.tagName === "IMG") {
-        const gifId = event.target.dataset.id;
-        renderGifDetails(gifId);
-      }
-    });
+  // document
+  //   .getElementById("trending-gifs")
+  //   .addEventListener("click", (event) => {
+  //     if (event.target.tagName === "IMG") {
+  //       const gifId = event.target.dataset.id;
+  //       renderGifDetails(gifId);
+  //     }
+  //   });
 });
 
 // import { HOME } from './common/constants.js';

@@ -2,7 +2,7 @@ import { fetchTrendingGifs } from "../requests/request-service.js";
 import { displayGifs } from "../views/gif-display.js";
 import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js"; // Corrected import line
 import { fetchGifDetails } from "../data/fetch-gifs.js"; // Corrected import line
-import { toGifDetailed } from "../views/gif-display.js";
+import { toGifDetailed } from "../views/details-view.js";
 import { toUploadView } from "../views/upload-view.js";
 import { q, setActiveNav } from "./helpers.js";
 
@@ -30,19 +30,16 @@ export const renderHome = () => {
     );
 };
 
-export const renderGifDetails = (gifId) => {
-  fetchGifDetails(gifId)
-    .then((gifDetails) => {
-      if (gifDetails) {
-        const detailedViewContainer = document.getElementById("detailed-view");
-        detailedViewContainer.innerHTML = toGifDetailed(gifDetails);
-        detailedViewContainer.style.display = "block"; // Show the detailed view
-        document.getElementById("trending-gifs").style.display = "none"; // Optionally hide the list
-      } else {
-        console.error("Failed to load GIF details.");
-      }
-    })
-    .catch((error) => console.error("Error fetching gif details:", error));
+export const renderGifDetails = async (id = null) => {
+  try {
+    // Fetch gif details asynchronously
+    const gifDetails = await fetchGifDetails(id);
+    
+    // Once the details are fetched, render them onto the page
+    q(CONTAINER_SELECTOR).innerHTML = toGifDetailed(gifDetails);
+  } catch (error) {
+    console.error("Error rendering gif details:", error);
+  }
 };
 
 const renderUpload = () => {

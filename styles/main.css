@@ -5,129 +5,115 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #303030; 
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" fill-opacity=".2"><rect width="12.5" height="7.5" /><rect x="12.5" y="7.5" width="12.5" height="7.5" /></svg>'); /* Mesh pattern with rectangles */
+  background: rgb(157, 179, 249);
+  background: radial-gradient(
+    circle,
+    rgba(157, 179, 249, 1) 0%,
+    rgba(118, 222, 153, 1) 100%
+  );
 }
 .team-name {
-  font-family: 'Bangers', cursive;
-  color: purple;
+  font-family: "Bangers";
+  color: #01635b;
   font-size: 128px;
   text-align: center;
   width: 100%;
-  margin-bottom: 20px;
-  cursor: pointer; 
-  transition: color 0.3s ease; 
+  margin-bottom: -30px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 .team-name {
   cursor: pointer;
-  user-select: none; 
-  outline: none; 
+  user-select: none;
+  outline: none;
 }
 
 .team-name:hover {
-  color: #7d007d; 
+  color: rgb(4, 65, 126);
 }
 
-/* h1 {
-  background-color: purple;
-  color: #fff;
-  padding: 5px 20px; 
-  width: calc(100% - 40px); 
-  text-align: left; 
-  font-size: 24px; 
-  border-bottom: 1px solid #fff; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-}
 h1 {
-  width: 180px; 
-  margin-left: auto; 
-  margin-right: auto; 
-  box-sizing: border-box; 
-} */
-
-#trending-title {
-  background-color: purple;
   color: #fff;
   padding: 5px 20px;
-  width: 11.1%;
-  margin-right: 56.2%;
+  width: calc(100% - 40px);
   text-align: left;
   font-size: 24px;
   border-bottom: 1px solid #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  cursor: pointer;
-  position: relative;
-  top: 35px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
-#trending-title:hover {
-  background-color: #7d007d; 
+h1 {
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .search-container {
   width: 70%;
   display: flex;
   justify-content: center;
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 .search-bar {
   width: 100%;
   display: flex;
-  align-items: stretch; 
+  align-items: stretch;
 }
 
-.search-bar input[type="text"], .search-bar button {
+.search-bar input[type="text"],
+.search-bar button {
   padding: 10px;
-  height: 40px; 
-  border: 1px solid #ddd; 
-  background: white; 
-  box-sizing: border-box; 
+  height: 40px;
+  border: 1px solid #ddd;
+  background: white;
+  box-sizing: border-box;
 }
 
 .search-bar input[type="text"] {
-  width: calc(100% - 52px); 
-  border-right: none; 
+  width: calc(100% - 52px);
+  border-right: none;
 }
 
 .search-bar button {
-  width: 40px; 
-  background: purple; 
-  color: white; 
-  border: none; 
+  width: 40px;
+  background: #01635b;
+  color: white;
+  border: none;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .search-bar button:hover {
-  background: #7d007d; 
+  background: rgb(4, 65, 126);
 }
 
 #trending-gifs {
-  -webkit-column-count: 5; 
-  -moz-column-count: 5; 
-  column-count: 5; 
-  
+  -webkit-column-count: 5;
+  -moz-column-count: 5;
+  column-count: 5;
+
   -webkit-column-gap: 5px;
   -moz-column-gap: 5px;
   column-gap: 5px;
-  
+
   width: 70%;
   margin: 20px auto;
   padding: 0 20px;
 }
 
 #trending-gifs img {
-  width: 100%; 
-  height: auto; 
-  gap: 20px 
-display block; 
+  width: 100%;
+  height: auto;
+  gap: 20px display block;
 }
 #detailed-view {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
   text-align: center;
-  display: none; 
+  display: none;
 }
 
 .detail-bar {
@@ -143,16 +129,11 @@ display block;
 
 .detail-button {
   padding: 8px 16px;
-  background-color: purple;
+  background-color: #01635b;
   color: white;
   border: none;
   cursor: pointer;
 }
-
-
-
-
-
 
 @media (max-width: 1200px) {
   #trending-gifs {
@@ -185,40 +166,71 @@ display block;
     column-count: 1;
   }
 }
-.trending-title {
-  width: 25%;  /* Assuming full width divided by 4 columns */
-  margin: 20px auto; /* Center the title within the container, added vertical margin */
-  text-align: center; /* Ensure the text is centered within the button itself */
-  background-color: purple;
-  color: #fff;
-  padding: 5px 20px; /* Adjust padding as needed */
-  cursor: pointer; /* Ensures it's clear this is a clickable element */
-  display: block; /* Ensures it takes the full width of the specified percentage */
-  border: none; /* Removes any default button borders */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Responsive adjustments to match the GIF column setup */
-@media (max-width: 1200px) {
-  .trending-title {
-    width: 25%; /* 4 columns */
-  }
+nav {
+  border-radius: 12px;
+  padding: 0 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.164);
+  margin: 20px;
+  margin-bottom: 3px;
+}
+.nav-content {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  list-style: none;
+  position: relative;
+}
+.link-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 120px;
+  width: 95px;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active {
+  transform: translateY(-10px);
+}
+.link-icon {
+  font-size: 38px;
+  color: #01635b;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active .link-icon {
+  color: rgb(4, 65, 126);
+}
+.link-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2c001b;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.link-item.active .link-text {
+  opacity: 1;
 }
 
-@media (max-width: 800px) {
-  .trending-title {
-    width: 33.33%; /* 3 columns */
-  }
+.indicator {
+  position: absolute;
+  top: -10px;
+  left: 13%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #01635b;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-@media (max-width: 600px) {
-  .trending-title {
-    width: 50%; /* 2 columns */
-  }
-}
-
-@media (max-width: 400px) {
-  .trending-title {
-    width: 100%; /* 1 column, full width */
-  }
-}
-
