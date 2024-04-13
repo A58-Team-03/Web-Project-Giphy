@@ -31,6 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(UPLOAD);
   });
 
+  document.addEventListener('click', function(event) {
+    
+    if (event.target.closest('.gif-data')) {
+      const gifId = event.target.closest('.gif-data').id;
+      renderGifDetails(gifId);
+    }
+  });
+  
+
   document.addEventListener("submit", (event) => {
     if (event.target.id === "uploadForm") {
       event.preventDefault();
