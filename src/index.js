@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
   });
+  
 
   // document
   //   .getElementById("trending-gifs")
