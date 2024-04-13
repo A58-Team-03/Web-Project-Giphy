@@ -2,7 +2,7 @@ import { fetchTrendingGifs } from "../requests/request-service.js";
 import { displayGifs } from "../views/gif-display.js";
 import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js"; // Corrected import line
 import { fetchGifDetails } from "../data/fetch-gifs.js"; // Corrected import line
-import { toGifDetailed } from "../views/gif-display.js";
+import { toGifDetailed } from "../views/details-view.js";
 import { toUploadView } from "../views/upload-view.js";
 import { q, setActiveNav } from "./helpers.js";
 
