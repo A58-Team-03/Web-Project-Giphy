@@ -1,44 +1,53 @@
 import { fetchTrendingGifs } from "../requests/request-service.js";
 import { displayGifs } from "../views/gif-display.js";
-import { CONTAINER_SELECTOR, HOME } from "../common/constants.js"; // Corrected import line
+import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js"; // Corrected import line
 import { fetchGifDetails } from "../data/fetch-gifs.js"; // Corrected import line
 import { toGifDetailed } from "../views/gif-display.js";
-
-
+import { toUploadView } from "../views/upload-view.js";
+import { q, setActiveNav } from "./helpers.js";
 
 export const loadPage = (page = "") => {
   switch (page) {
     case HOME:
       renderHome();
       break;
+    case UPLOAD:
+      return renderUpload();
     // Handle other cases as needed
     default:
-      console.error('Page not found');
+      console.error("Page not found");
       break;
   }
 };
 
 export const renderHome = () => {
-  fetchTrendingGifs().then(gifs => {
-    displayGifs(gifs, CONTAINER_SELECTOR);
-  }).catch(error => console.error("Failed to fetch and render trending gifs:", error));
+  fetchTrendingGifs()
+    .then((gifs) => {
+      displayGifs(gifs, CONTAINER_SELECTOR);
+    })
+    .catch((error) =>
+      console.error("Failed to fetch and render trending gifs:", error)
+    );
 };
 
 export const renderGifDetails = (gifId) => {
-  fetchGifDetails(gifId).then(gifDetails => {
+  fetchGifDetails(gifId)
+    .then((gifDetails) => {
       if (gifDetails) {
-          const detailedViewContainer = document.getElementById("detailed-view");
-          detailedViewContainer.innerHTML = toGifDetailed(gifDetails);
-          detailedViewContainer.style.display = 'block'; // Show the detailed view
-          document.getElementById("trending-gifs").style.display = 'none'; // Optionally hide the list
+        const detailedViewContainer = document.getElementById("detailed-view");
+        detailedViewContainer.innerHTML = toGifDetailed(gifDetails);
+        detailedViewContainer.style.display = "block"; // Show the detailed view
+        document.getElementById("trending-gifs").style.display = "none"; // Optionally hide the list
       } else {
-          console.error("Failed to load GIF details.");
+        console.error("Failed to load GIF details.");
       }
-  }).catch(error => console.error("Error fetching gif details:", error));
+    })
+    .catch((error) => console.error("Error fetching gif details:", error));
 };
 
-
-
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
+};
 
 // import {
 //   ABOUT,

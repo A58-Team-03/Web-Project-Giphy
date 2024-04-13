@@ -1,20 +1,22 @@
-import { HOME } from './common/constants.js';
-import { loadPage, renderGifDetails } from './events/navigation-events.js';
-import { renderSearchItems } from './events/search-events.js';
-import { q } from './events/helpers.js';
+import { HOME, UPLOAD } from "./common/constants.js";
+import { loadPage, renderGifDetails } from "./events/navigation-events.js";
+import { renderSearchItems } from "./events/search-events.js";
+import { q } from "./events/helpers.js";
+import { uploadGifs } from "./data/fetch-gifs.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   loadPage(HOME);
 
   const searchButton = q("#search-button");
   const searchInput = q("#search-input");
   const logo = q(".team-name");
+  const uploadLink = q("[data-page='upload']");
 
   searchButton.addEventListener("click", () => {
     renderSearchItems(searchInput.value);
   });
 
-  searchInput.addEventListener("keypress", event => {
+  searchInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
       renderSearchItems(searchInput.value);
     }
@@ -24,29 +26,47 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPage(HOME);
   });
 
-trendingTitle.addEventListener  ("click", () => {
-  loadPage(HOME); 
-});
+  uploadLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    loadPage(UPLOAD);
+  });
 
-  document.getElementById("trending-gifs").addEventListener("click", event => {
-    if (event.target.tagName === 'IMG') {
-      const gifId = event.target.dataset.id;  
-      renderGifDetails(gifId);
+  document.addEventListener("submit", (event) => {
+    if (event.target.id === "uploadForm") {
+      event.preventDefault();
+
+      const fileInput = q("#fileInput");
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
+
+      uploadGifs(file)
+        .then(() => {
+          console.log("Upload successful!");
+        })
+        .catch((error) => {
+          console.error("Error uploading GIF:", error);
+        });
     }
   });
+
+  document
+    .getElementById("trending-gifs")
+    .addEventListener("click", (event) => {
+      if (event.target.tagName === "IMG") {
+        const gifId = event.target.dataset.id;
+        renderGifDetails(gifId);
+      }
+    });
 });
-
-
-
-
 
 // import { HOME } from './common/constants.js';
 // import { toggleFavoriteStatus } from './events/favorites-events.js';
 // import { q } from './events/helpers.js';
 // import { loadPage, renderCategory, renderMovieDetails } from './events/navigation-events.js';
 // import { renderSearchItems } from './events/search-events.js';
-
-
 
 // document.addEventListener('DOMContentLoaded', () => {
 
