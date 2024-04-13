@@ -76,13 +76,23 @@ h1 {
   padding: 10px;
   height: 40px;
   border: 1px solid #ddd;
-  background: white;
   box-sizing: border-box;
 }
 
 .search-bar input[type="text"] {
   width: calc(100% - 52px);
   border-right: none;
+
+  border-radius: 12px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  background-color: unset;
+  border: unset;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.164);
+
+  outline: none;
 }
 
 .search-bar button {
@@ -90,6 +100,12 @@ h1 {
   background: #01635b;
   color: white;
   border: none;
+
+  border-radius: 12px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
   cursor: pointer;
   transition: color 0.3s ease;
 }
