@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage(UPLOAD);
   });
 
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".gif-data")) {
+      const gifId = event.target.closest(".gif-data").id;
+      renderGifDetails(gifId);
+    }
+  });
+
   const navItems = qs(".link-item");
   navItems.forEach((navItem, index) => {
     navItem.addEventListener("click", () => {
@@ -82,14 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document
-    .getElementById("trending-gifs")
-    .addEventListener("click", (event) => {
-      if (event.target.tagName === "IMG") {
-        const gifId = event.target.dataset.id;
-        renderGifDetails(gifId);
-      }
-    });
+  // document
+  //   .getElementById("trending-gifs")
+  //   .addEventListener("click", (event) => {
+  //     if (event.target.tagName === "IMG") {
+  //       const gifId = event.target.dataset.id;
+  //       renderGifDetails(gifId);
+  //     }
+  //   });
 });
 
 // import { HOME } from './common/constants.js';

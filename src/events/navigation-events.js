@@ -30,19 +30,16 @@ export const renderHome = () => {
     );
 };
 
-export const renderGifDetails = (gifId) => {
-  fetchGifDetails(gifId)
-    .then((gifDetails) => {
-      if (gifDetails) {
-        const detailedViewContainer = document.getElementById("detailed-view");
-        detailedViewContainer.innerHTML = toGifDetailed(gifDetails);
-        detailedViewContainer.style.display = "block"; // Show the detailed view
-        document.getElementById("trending-gifs").style.display = "none"; // Optionally hide the list
-      } else {
-        console.error("Failed to load GIF details.");
-      }
-    })
-    .catch((error) => console.error("Error fetching gif details:", error));
+export const renderGifDetails = async (id = null) => {
+  try {
+    // Fetch gif details asynchronously
+    const gifDetails = await fetchGifDetails(id);
+    
+    // Once the details are fetched, render them onto the page
+    q(CONTAINER_SELECTOR).innerHTML = toGifDetailed(gifDetails);
+  } catch (error) {
+    console.error("Error rendering gif details:", error);
+  }
 };
 
 const renderUpload = () => {
