@@ -14,6 +14,11 @@
       <title>Trending Gifs</title>
     </head>
 
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <body>
       <div class="team-name">Team Free Gifz</div>
 
@@ -25,10 +30,39 @@
           </button>
         </div>
       </div>
-      <h1>Trending Gifs</h1>
-      <nav class="navbar">
-        <a href="#" class="nav-link" data-page="upload">Upload</a>
+
+      <nav class="nav">
+        <ul class="nav-content">
+          <li class="nav-list">
+            <a href="#" class="link-item active">
+              <i class="bx bx-trending-up link-icon bx-sm"></i>
+              <span class="link-text">Trending</span>
+            </a>
+          </li>
+          <li class="nav-list">
+            <a href="#" class="link-item">
+              <i class="bx bx-upload link-icon bx-sm id="upload-box"></i>
+              <span class="link-text" id="upload">Upload</span>
+            </a>
+          </li>
+          <li class="nav-list">
+            <a href="#" class="link-item">
+              <i class="bx bxs-heart link-icon bx-sm"></i>
+              <span class="link-text">Favorites</span>
+            </a>
+          </li>
+          <li class="nav-list">
+            <a href="#" class="link-item">
+              <i class="bx bxs-info-circle link-icon bx-sm"></i>
+              <span class="link-text">About</span>
+            </a>
+          </li>
+
+          <span class="indicator"></span>
+        </ul>
       </nav>
+
+    
       <div id="trending-gifs"></div>
       <div id="detailed-view"></div>
       <script src="./src/index.js" type="module"></script>
