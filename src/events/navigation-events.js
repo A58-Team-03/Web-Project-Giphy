@@ -1,7 +1,6 @@
-import { fetchTrendingGifs } from "../requests/request-service.js";
 import { displayGifs } from "../views/gif-display.js";
 import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js"; // Corrected import line
-import { fetchGifDetails } from "../data/fetch-gifs.js"; // Corrected import line
+import { fetchGifDetails, fetchTrendingGifs } from "../data/fetch-gifs.js"; // Corrected import line
 import { toGifDetailed } from "../views/details-view.js";
 import { toUploadView } from "../views/upload-view.js";
 import { q, setActiveNav } from "./helpers.js";
@@ -34,7 +33,7 @@ export const renderGifDetails = async (id = null) => {
   try {
     // Fetch gif details asynchronously
     const gifDetails = await fetchGifDetails(id);
-    
+
     // Once the details are fetched, render them onto the page
     q(CONTAINER_SELECTOR).innerHTML = toGifDetailed(gifDetails);
   } catch (error) {
@@ -42,12 +41,8 @@ export const renderGifDetails = async (id = null) => {
   }
 };
 
-export const renderUpload = () => {
-  const container = q("#upload-container");
-  container.innerHTML = toUploadView();
-  container.style.display = 'block'; 
-  q("#trending-gifs").style.display = 'none'; 
-  q(".search-container").style.display = 'none';
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 
