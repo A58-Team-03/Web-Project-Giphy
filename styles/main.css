@@ -94,18 +94,14 @@ h1 {
   background: #01635b;
   color: white;
   border: none;
-
   border-radius: 12px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-bar button:hover {
   background: rgb(4, 65, 126);
+  box-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #4a90e2; /* Glowing effect */
 }
 
 #trending-gifs {
