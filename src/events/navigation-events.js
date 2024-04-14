@@ -42,12 +42,8 @@ export const renderGifDetails = async (id = null) => {
   }
 };
 
-export const renderUpload = () => {
-  const container = q("#upload-container");
-  container.innerHTML = toUploadView();
-  container.style.display = 'block'; 
-  q("#trending-gifs").style.display = 'none'; 
-  q(".search-container").style.display = 'none';
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 // import {
