@@ -12,8 +12,9 @@ body {
     rgba(118, 222, 153, 1) 100%
   );
 }
+
 .team-name {
-  font-family: "Bangers";
+  font-family: "Bangers", sans-serif;
   color: #01635b;
   font-size: 128px;
   text-align: center;
@@ -21,17 +22,19 @@ body {
   margin-bottom: -30px;
   margin-top: 30px;
   cursor: pointer;
-  transition: color 0.3s ease;
-}
-.team-name {
-  cursor: pointer;
   user-select: none;
   outline: none;
+  text-shadow: -2px -2px 0 #004d40, 2px -2px 0 #004d40, -2px 2px 0 #004d40, 2px 2px 0 #004d40; /* Dark green shadows for outline effect */
+  transition: color 0.3s ease;
 }
 
 .team-name:hover {
-  color: rgb(4, 65, 126);
+  color: #ffffff; 
+  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #01635b; 
 }
+
+
+
 
 h1 {
   color: #fff;

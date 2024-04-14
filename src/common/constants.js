@@ -1,4 +1,4 @@
-export const API_KEY = "H4aI41fwlQQTs8zwkFGDK6nhz2Ap7EWK";
+export const API_KEY = "ZukUfGQGywWNxeY5PBTQ1VPBESKo0AqF";
 export const API_URL = "https://api.giphy.com/v1/gifs";
 export const API_UPLOAD_URL = "https://upload.giphy.com/v1/gifs";
 export const CONTAINER_SELECTOR = "#trending-gifs";
