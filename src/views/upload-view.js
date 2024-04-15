@@ -1,6 +1,6 @@
 export const toUploadView = () => `
-<form id="upload-form" class="upload">
-  <input type="file" id="fileInput" accept="image/gif" ">
+<form id="uploadForm" class="upload">
+  <input type="file" id="fileInput" accept=".gif" ">
   <button type="submit" class="upload">Upload</button>
 </form>
 `;
