@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", function (event) {
-    if (event.target.closest(".gif-data")) {
+    if (event.target.closest(".gif-data") && !event.target.classList.contains("details-toggle-btn")) {
       const gifId = event.target.closest(".gif-data").id;
       renderGifDetails(gifId);
     }

@@ -29,17 +29,30 @@ export const renderHome = () => {
     );
 };
 
-export const renderGifDetails = async (id = null) => {
+export const renderGifDetails = async (id) => {
   try {
-    // Fetch gif details asynchronously
-    const gifDetails = await fetchGifDetails(id);
+    const gifDetails = await fetchGifDetails(id); // Fetching gif details based on ID
+    const detailsContainer = q(CONTAINER_SELECTOR); // Using the helper function and selector constant
+    detailsContainer.innerHTML = toGifDetailed(gifDetails);
+    detailsContainer.style.display = 'block'; // Ensure the container is visible
 
-    // Once the details are fetched, render them onto the page
-    q(CONTAINER_SELECTOR).innerHTML = toGifDetailed(gifDetails);
+    // Initialize or redefine visibility toggling for detailed info
+    const detailsButton = detailsContainer.querySelector('.details-toggle-btn');
+    const gifInfo = detailsContainer.querySelector('.gif-info');
+    if (detailsButton) {
+      detailsButton.addEventListener('click', () => {
+        gifInfo.style.display = gifInfo.style.display === 'none' ? 'block' : 'none'; // Toggle display
+      });
+    }
   } catch (error) {
     console.error("Error rendering gif details:", error);
   }
 };
+
+
+
+
+
 
 const renderUpload = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
