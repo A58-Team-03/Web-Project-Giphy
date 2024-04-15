@@ -263,10 +263,8 @@ nav {
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-#upload-form {
+#uploadForm {
   display: inline-grid;
-  grid-template-columns: auto;
-  align-items: center;
   gap: 20px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -277,7 +275,7 @@ nav {
   border: unset;
 }
 
-#upload-form input[type="file"] {
+#uploadForm input[type="file"] {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
