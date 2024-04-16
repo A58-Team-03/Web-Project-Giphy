@@ -1,28 +1,23 @@
+<!--
+  This is the main HTML file for the Free Gifz web project.
+  It contains the structure and layout of the web page.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Free Gifz</title>
-<link
-        href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      />
-      <link rel="stylesheet" type="text/css" href="./styles/main.css" />
-      
-      
-      <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-      />
-    
+  <!-- External CSS and font libraries -->
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <link rel="stylesheet" type="text/css" href="./styles/main.css" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
 <body>
-
+  <!-- Team name -->
   <div class="team-name">Team Free Gifz</div>
 
+  <!-- Search bar -->
   <div class="search-container">
     <div class="search-bar">
       <input type="text" id="search-input" placeholder="Search.." />
@@ -32,8 +27,8 @@
     </div>
   </div>
 
-
   <div id="app">
+    <!-- Navigation bar -->
     <nav class="nav">
       <ul class="nav-content">
         <li class="nav-list">
@@ -44,7 +39,7 @@
         </li>
         <li class="nav-list">
           <a href="#" class="link-item">
-            <i class="bx bx-upload link-icon bx-sm id="upload-box"></i>
+            <i class="bx bx-upload link-icon bx-sm" id="upload-box"></i>
             <span class="link-text" id="upload">Upload</span>
           </a>
         </li>
@@ -64,17 +59,14 @@
         <span class="indicator"></span>
       </ul>
     </nav>
+
     <div id="container">
-      <!-- start placeholders -->
-
-      <!-- end placeholders -->
+      <!-- Placeholder for dynamic content -->
     </div>
-
   </div>
 
-  <!-- app -->
+  <!-- JavaScript file -->
   <script src="./src/index.js" type="module"></script>
-  <!-- end app -->
 </body>
 </head>
 </html>

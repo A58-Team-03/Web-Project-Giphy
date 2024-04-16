@@ -12,7 +12,6 @@ import { getGifsById } from "../data/fetch-gifs.js";
  * @returns {Promise<void>} - A Promise that resolves once the upload process is complete.
  * @throws {Error} - Throws an error if there is an issue with the upload process.
  */
-
 export const handleUpload = async (event) => {
   event.preventDefault();
 

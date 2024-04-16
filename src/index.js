@@ -51,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const indicator = document.querySelector(".indicator");
       indicator.style.left = `${index * 95 + 48}px`;
 
+      /**
+       * Represents the text content of a navigation item.
+       * @type {string}
+       */
       const text = navItem.querySelector(".link-text").textContent;
 
       switch (true) {

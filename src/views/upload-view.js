@@ -1,5 +1,11 @@
 import { toSingleGifView } from "./gifs-view.js";
 
+/**
+ * Converts a GIF object into an upload view HTML string.
+ *
+ * @param {Object} gif - The GIF object to be converted.
+ * @returns {string} - The HTML string representing the upload view.
+ */
 export const toUploadView = (gif) => `
    <div>
    <form id="upload-form">

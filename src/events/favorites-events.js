@@ -6,6 +6,13 @@ import {
 } from "../data/favorites.js";
 import { q } from "./helpers.js";
 
+/**
+ * Toggles the favorite status of a GIF.
+ * If the GIF is already in the favorites list, it will be removed.
+ * If the GIF is not in the favorites list, it will be added.
+ *
+ * @param {string} gifId - The ID of the GIF to toggle the favorite status for.
+ */
 export const toggleFavoriteStatus = (gifId) => {
   const favorites = getFavorites();
   const heartSpan = q(`span[gif-id="${gifId}"]`);
@@ -21,6 +28,12 @@ export const toggleFavoriteStatus = (gifId) => {
   }
 };
 
+/**
+ * Renders the favorite status of a GIF.
+ * 
+ * @param {string} gifId - The ID of the GIF.
+ * @returns {string} - The HTML markup representing the favorite status of the GIF.
+ */
 export const renderFavoriteStatus = (gifId) => {
   const favorites = getFavorites();
 
