@@ -1,4 +1,4 @@
-import { HOME, UPLOAD } from "./common/constants.js";
+import { HOME, UPLOAD, FAVORITES, ABOUT } from "./common/constants.js";
 import { loadPage, renderGifDetails } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
 import { q, qs } from "./events/helpers.js";
@@ -32,11 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", function (event) {
-    if (event.target.closest(".gif-data")) {
+    if (event.target.hasOwnProperty('gif')) {
       const gifId = event.target.closest(".gif-data").id;
       renderGifDetails(gifId);
     }
   });
+
+  // document.addEventListener("click", function (event) {
+  //   if (event.target.classList.contains("gif-data")) {
+  //     const gifId = event.target.id;
+  //     renderGifDetails(gifId);
+  //   }
+  // });
+
 
   const navItems = qs(".link-item");
   navItems.forEach((navItem, index) => {

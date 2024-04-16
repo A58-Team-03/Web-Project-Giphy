@@ -1,9 +1,12 @@
 import { displayGifs } from "../views/gif-display.js";
-import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js"; // Corrected import line
-import { fetchGifDetails, fetchTrendingGifs } from "../data/fetch-gifs.js"; // Corrected import line
+import { CONTAINER_SELECTOR, HOME, UPLOAD, FAVORITES, ABOUT } from "../common/constants.js";
+import { fetchGifDetails, fetchTrendingGifs } from "../data/fetch-gifs.js";
 import { toGifDetailed } from "../views/details-view.js";
 import { toUploadView } from "../views/upload-view.js";
 import { q, setActiveNav } from "./helpers.js";
+import { getFavorites } from "../data/favorites.js";
+import { toFavoritesView } from "../views/favorites-view.js";
+import { toAboutView } from "../views/about-view.js";
 
 export const loadPage = (page = "") => {
   switch (page) {
@@ -12,7 +15,12 @@ export const loadPage = (page = "") => {
       break;
     case UPLOAD:
       return renderUpload();
-    // Handle other cases as needed
+    case FAVORITES:
+      renderFavorites();
+      break;
+    case ABOUT:
+      renderAbout();
+      break;
     default:
       console.error("Page not found");
       break;
@@ -22,7 +30,7 @@ export const loadPage = (page = "") => {
 export const renderHome = () => {
   fetchTrendingGifs()
     .then((gifs) => {
-      displayGifs(gifs, CONTAINER_SELECTOR);
+      displayGifs(gifs);
     })
     .catch((error) =>
       console.error("Failed to fetch and render trending gifs:", error)
@@ -49,7 +57,14 @@ export const renderGifDetails = async (id) => {
   }
 };
 
+const renderFavorites = () => {
+  const favorites = getFavorites();
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(Promise.all(favorites.map((favorite) =>  fetchGifDetails(favorite))).then((gifs) => displayGifs(gifs)));
+};
 
+const renderAbout = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
+};
 
 
 
