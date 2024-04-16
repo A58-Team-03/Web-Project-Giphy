@@ -7,6 +7,11 @@ import { handleUpload } from "./events/upload-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // add global listener
+  const logo = q(".team-name");
+  logo.addEventListener("click", () => {
+    loadPage(HOME); // Load the home page
+    setActiveNavItem(); // Set the active navigation item
+  });
   document.addEventListener("click", (event) => {
     // nav events
     if (event.target.classList.contains("nav-link")) {
@@ -46,15 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const navItems = qs(".link-item");
   navItems.forEach((navItem, index) => {
     navItem.addEventListener("click", () => {
-      document.querySelector(".active").classList.remove("active");
+      q(".active").classList.remove("active");
       navItem.classList.add("active");
-      const indicator = document.querySelector(".indicator");
+      const indicator = q(".indicator");
       indicator.style.left = `${index * 95 + 48}px`;
 
-      /**
-       * Represents the text content of a navigation item.
-       * @type {string}
-       */
       const text = navItem.querySelector(".link-text").textContent;
 
       switch (true) {
@@ -76,4 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  const setActiveNavItem = () => {
+    const navItems = qs(".link-item");
+    navItems.forEach((nav) => {
+      const text = nav.querySelector(".link-text").textContent.trim();
+
+      if (text === "Trending") {
+        nav.classList.add("active");
+        const indicator = q(".indicator");
+
+        if (indicator) {
+          indicator.style.left = `${
+            nav.offsetLeft + nav.offsetWidth / 1.7 - indicator.offsetWidth / 2
+          }px`;
+        }
+      } else {
+        nav.classList.remove("active");
+      }
+    });
+  };
 });
