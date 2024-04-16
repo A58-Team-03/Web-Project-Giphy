@@ -21,5 +21,3 @@ export const setActiveNav = (page) => {
       : element.classList.remove("active")
   );
 };
-
-//-- DO NOT TOUCH

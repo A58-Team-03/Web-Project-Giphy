@@ -1,6 +1,11 @@
-export const toUploadView = () => `
-<form id="uploadForm" class="upload">
-  <input type="file" id="fileInput" accept=".gif" ">
-  <button type="submit" class="upload">Upload</button>
-</form>
+import { toSingleGifView } from "./gifs-view.js";
+
+export const toUploadView = (gif) => `
+   <div>
+   <form id="upload-form">
+   <input type="file" id="gif-upload" name="gif" accept=".gif" required>
+   <button class="upload-gif" type="submit">Upload</button>
+   </form>
+   ${Object.keys(gif).length === 0 ? "" : toSingleGifView(gif)}
+   </div>
 `;

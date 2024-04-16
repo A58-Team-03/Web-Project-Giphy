@@ -1,13 +1,11 @@
-import { displayGifs } from "../views/gif-display.js";
-import { CONTAINER_SELECTOR } from "../common/constants.js";
-import { fetchSearchGifs } from "../data/fetch-gifs.js";
+import { CONTAINER_SELECTOR, LIMIT_GIFS } from "../common/constants.js";
+import { searchGifs } from "../data/fetch-gifs.js";
+import { toSearchView } from "../views/search-view.js";
+import { q, setActiveNav } from "./helpers.js";
 
 export const renderSearchItems = (searchTerm) => {
-  fetchSearchGifs(searchTerm)
-    .then((gifs) => {
-      displayGifs(gifs, CONTAINER_SELECTOR);
-    })
-    .catch((error) =>
-      console.error("Failed to fetch and display search results:", error)
-    );
+  setActiveNav();
+  searchGifs(searchTerm, LIMIT_GIFS).then(
+    (data) => (q(CONTAINER_SELECTOR).innerHTML = toSearchView(data, searchTerm))
+  );
 };

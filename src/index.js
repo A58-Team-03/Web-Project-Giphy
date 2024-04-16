@@ -1,50 +1,47 @@
-import { HOME, UPLOAD, FAVORITES, ABOUT } from "./common/constants.js";
+import { ABOUT, FAVORITES, HOME, UPLOAD } from "./common/constants.js";
+import { toggleFavoriteStatus } from "./events/favorites-events.js";
+import { q, qs } from "./events/helpers.js";
 import { loadPage, renderGifDetails } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
-import { q, qs } from "./events/helpers.js";
-import { uploadGifs } from "./data/fetch-gifs.js";
+import { handleUpload } from "./events/upload-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // add global listener
+  document.addEventListener("click", (event) => {
+    // nav events
+    if (event.target.classList.contains("nav-link")) {
+      loadPage(event.target.getAttribute("data-page"));
+    }
+
+    // show upload events
+    if (event.target.classList.contains("upload-gif")) {
+      handleUpload(event);
+    }
+
+    // show gif details events
+    if (event.target.classList.contains("gif")) {
+      renderGifDetails(event.target.getAttribute("gif-id"));
+    }
+
+    // toggle favorite event
+    if (event.target.classList.contains("favorite")) {
+      toggleFavoriteStatus(event.target.getAttribute("gif-id"));
+    }
+
+    if (event.target.classList.contains("fa-search")) {
+      renderSearchItems(q("input#search-input").value);
+    }
+  });
+
+  // search events
+  q(".search-container").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      renderSearchItems(e.target.value);
+    }
+  });
+
   loadPage(HOME);
-
-  const searchButton = q("#search-button");
-  const searchInput = q("#search-input");
-  const logo = q(".team-name");
-  const uploadText = q(".link-text#upload");
-
-  searchButton.addEventListener("click", () => {
-    renderSearchItems(searchInput.value);
-  });
-
-  searchInput.addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-      renderSearchItems(searchInput.value);
-    }
-  });
-
-  logo.addEventListener("click", () => {
-    loadPage(HOME);
-  });
-
-  uploadText.addEventListener("click", (event) => {
-    event.preventDefault();
-    loadPage(UPLOAD);
-  });
-
-  document.addEventListener("click", function (event) {
-    if (event.target.hasOwnProperty('gif')) {
-      const gifId = event.target.closest(".gif-data").id;
-      renderGifDetails(gifId);
-    }
-  });
-
-  // document.addEventListener("click", function (event) {
-  //   if (event.target.classList.contains("gif-data")) {
-  //     const gifId = event.target.id;
-  //     renderGifDetails(gifId);
-  //   }
-  // });
-
 
   const navItems = qs(".link-item");
   navItems.forEach((navItem, index) => {
@@ -75,89 +72,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-  document.addEventListener("submit", (event) => {
-    if (event.target.id === "uploadForm") {
-      event.preventDefault();
-
-      const fileInput = q("#fileInput");
-      const file = fileInput.files[0];
-      if (!file) {
-        alert("Please select a file.");
-        return;
-      }
-
-      uploadGifs(file)
-        .then(() => {
-          console.log("Upload successful!");
-        })
-        .catch((error) => {
-          console.error("Error uploading GIF:", error);
-        });
-    }
-  });
-
-  // document
-  //   .getElementById("trending-gifs")
-  //   .addEventListener("click", (event) => {
-  //     if (event.target.tagName === "IMG") {
-  //       const gifId = event.target.dataset.id;
-  //       renderGifDetails(gifId);
-  //     }
-  //   });
 });
-
-// import { HOME } from './common/constants.js';
-// import { toggleFavoriteStatus } from './events/favorites-events.js';
-// import { q } from './events/helpers.js';
-// import { loadPage, renderCategory, renderMovieDetails } from './events/navigation-events.js';
-// import { renderSearchItems } from './events/search-events.js';
-
-// document.addEventListener('DOMContentLoaded', () => {
-
-//   // add global listener
-//   document.addEventListener('click', event => {
-
-//     // nav events
-//     if (event.target.classList.contains('nav-link')) {
-
-//       loadPage(event.target.getAttribute('data-page'));
-//     }
-
-//     // show category events
-//     if (event.target.classList.contains('view-category-btn')) {
-//       renderCategory(+event.target.getAttribute('data-category-id'));
-//     }
-
-//     // show movie events
-//     if (event.target.classList.contains('view-movie-btn')) {
-//       renderMovieDetails(+event.target.getAttribute('data-movie-id'));
-//     }
-
-//     // toggle favorite event
-//     if (event.target.classList.contains('favorite')) {
-//       toggleFavoriteStatus(+event.target.getAttribute('data-movie-id'));
-//     }
-
-//   });
-
-//   // // search events
-//   // q('input#search').addEventListener('input', e => {
-//   //   renderSearchItems(e.target.value);
-//   // });
-
-//   q("button#search-button").addEventListener("click", () => {
-//     const searchTerm = q("input#search").value;
-//     renderSearchItems(searchTerm);
-//   });
-
-//   loadPage(HOME);
-
-// });
-
-// q("input#search").addEventListener("keypress", (event) => {
-//   if (event.key === "Enter") {
-//     const searchTerm = q("input#search").value;
-//     renderSearchItems(searchTerm);
-//   }
-// });
