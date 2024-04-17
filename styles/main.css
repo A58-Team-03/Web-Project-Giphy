@@ -438,10 +438,6 @@ p {
   box-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #4a90e2;
 }
 
-#gif-upload::-webkit-file-upload-button {
-  display: none;
-}
-
 .custom-upload-button-label {
   display: flex;
   justify-content: center;
