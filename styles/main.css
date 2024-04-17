@@ -36,6 +36,7 @@ h1 {
   color: #01635b;
   margin-bottom: 10px;
 }
+
 .content h2 {
   display: flex;
   justify-content: center;
@@ -46,17 +47,33 @@ h1 {
   animation: fadeInOut 2s infinite;
 }
 
+#search-gifs h2 {
+  display: flex;
+  justify-content: center;
+  color: rgb(4, 65, 126);
+}
+
 h3 {
   display: flex;
   justify-content: center;
+  color: #01635b;
 }
+
 h4 {
   display: flex;
   justify-content: center;
+  color: #01635b;
 }
 
 p {
-  display: grid;
+  font-weight: 600;
+  color: rgb(4, 65, 126);
+  animation: fadeInOut 2s infinite;
+}
+
+#container p {
+  display: flex;
+  justify-content: center;
 }
 
 #enjoy-random-gif {
@@ -86,6 +103,7 @@ p {
   color: #ffffff;
   text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #01635b;
 }
+
 #app .nav {
   border-radius: 12px;
   padding: 0 25px;
@@ -114,7 +132,6 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 120px;
   width: 95px;
   text-decoration: none;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -147,11 +164,12 @@ p {
 .link-text {
   position: absolute;
   font-size: 12px;
-  font-weight: 500;
-  color: #2c001b;
+  font-weight: 600;
+  color: rgb(4, 65, 126);
   opacity: 0;
   transform: translateY(32px);
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-bottom: 18px;
 }
 
 .link-item.active .link-text {
@@ -301,15 +319,44 @@ p {
 
 .gif-only > .favorite {
   position: absolute;
-
   visibility: hidden;
   font-size: 30px;
   color: #01635b;
+  margin-left: 10px;
 }
 
 .gif-only:hover .favorite {
   visibility: visible;
   cursor: pointer;
+  z-index: 999;
+}
+
+.gif-only {
+  transition: transform 0.2s ease-in-out;
+}
+
+.gifs-container .gif-only:hover {
+  transform: scale(1.12);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.gifs-container:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.gif-only {
+  z-index: 2; /* Ensure the GIF is above the overlay */
 }
 
 @media (max-width: 1600px) {
@@ -370,4 +417,50 @@ p {
   border-bottom-left-radius: 0%;
   border-top-right-radius: 0%;
   width: 100%;
+}
+
+#upload-form button {
+  display: flex;
+  justify-self: center;
+  background-color: #01635b;
+  color: white;
+  border: unset;
+  border-radius: 12px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  width: 150px;
+  padding: 5px 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#upload-form button:hover {
+  background: rgb(4, 65, 126);
+  box-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #4a90e2;
+}
+
+#gif-upload::-webkit-file-upload-button {
+  display: none;
+}
+
+.custom-upload-button-label {
+  display: flex;
+  justify-content: center;
+  background-color: #01635b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-upload-button-label:hover {
+  background: rgb(4, 65, 126);
+  box-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #4a90e2;
+}
+
+#gif-upload::-webkit-file-upload-button {
+  display: none;
 }

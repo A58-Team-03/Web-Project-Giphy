@@ -10,15 +10,15 @@ import { toGifsView } from "./gifs-view.js";
  */
 export const toSearchView = (gifs, searchTerm) => `
 <div id="search-gifs">
-    <h2>Your searched word:</h2>
-    <h3>${searchTerm}</h3>
-    <div class ="gifs-container">
     ${
       gifs.length > EMPTY_LENGTH
-        ? toGifsView(gifs)
+        ? `<h2>You searched:</h2>
+            <h3>${searchTerm}</h3>
+            <div class ="gifs-container">
+                ${toGifsView(gifs)}
+            </div>`
         : searchTerm.length > EMPTY_LENGTH
-        ? `<p>No gifs found for ${searchTerm}</p>`
-        : "<p>Enter a gif name.</p>"
+        ? `<p>No GIFs found for: ${searchTerm}</p>`
+        : "<p>Please enter a GIF name.</p>"
     }
-    </div>
 </div>`;

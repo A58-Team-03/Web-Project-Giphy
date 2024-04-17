@@ -36,6 +36,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.classList.contains("fa-search")) {
       renderSearchItems(q("input#search-input").value);
     }
+
+    const gifsContainer = q(".gifs-container");
+    const overlay = q(".overlay");
+
+    gifsContainer.addEventListener("mouseover", showOverlay);
+    gifsContainer.addEventListener("mouseout", hideOverlay);
+
+    function showOverlay() {
+      overlay.style.opacity = "1";
+    }
+
+    function hideOverlay() {
+      overlay.style.opacity = "0";
+    }
   });
 
   // search events
